@@ -263,9 +263,7 @@ $new=$date.'-'.$month.'-'.$year;
                         
                     @endif
                 @endforeach
-    <?php
-          echo {{$totalVentas}};
-        ?>
+   
 
                                                    
                            
