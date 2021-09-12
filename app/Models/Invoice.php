@@ -33,6 +33,6 @@ class Invoice extends Model
         }
         return $notmenus;
     }
-
+    
 }
 

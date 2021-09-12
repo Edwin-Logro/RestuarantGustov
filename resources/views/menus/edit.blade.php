@@ -36,7 +36,7 @@
                                                  {{ method_field('PATCH') }}
                                                                     <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
                                                                         <label for="first-name-icon">Name</label>
-                                                                        <input type="text" class="form-control round form-control-lg shadow pl-2" name="name" id="name" value="{{$menus->name}}">
+                                                                        <input type="text" class="form-control round form-control-lg shadow pl-2" name="nameMenu" id="nameMenu" value="{{$menus->nameMenu}}">
                                                                     </fieldset>
                                                                     <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
                                                                         <label for="first-name-icon">Price</label>

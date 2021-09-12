@@ -9,13 +9,16 @@ use Illuminate\Support\Facades\DB;
 use DateTime;
 
 use Illuminate\Http\Request;
-
 class InvoiceController extends Controller
 {
     public function index()
     {
+        $customers = Customer::orderBy('id','desc')->First();
         $menus = Menu::orderBy('id','desc')->get();
-        return view('invoices.index');
+        $invoices = invoice::orderBy('id','desc')->First();
+        $menuInvoices = menuInvoice::orderBy('id','desc')->get();
+        return view('invoices.index',compact('customers','menus','invoices','menuInvoices'));
+
     }
     public function create()
     {
@@ -24,11 +27,8 @@ class InvoiceController extends Controller
     }
     public function store(Request $request)
     {  
-        
         if(Invoice::verifySale($request->number))
         {
-           // return response()->json($request);
-           //Costume
             $custome = new Customer();
             $custome->name= $request->name;
             $custome->nit= $request->nit;
@@ -38,7 +38,6 @@ class InvoiceController extends Controller
             $limit = count($request->id);
             //register Invoices
             $invoice = new Invoice();
-            
             $invoice->codeBill = (string) Uuid::generate();
             $invoice->total = Invoice::calculateTotal($request->number,$request->price);
             $invoice->customer_id= $custome->id;
@@ -59,26 +58,21 @@ class InvoiceController extends Controller
             }
         }
            
-        return redirect('/invoices');
+        return redirect('/invoice');
     }
     public function show(Invoice $invoice)
     {
+        //reportes
         //Invoice::whereBetween('created_at', [$request->date_init, $request->date_end])->with(['customer', 'menu_invoices.menu'])->get();
-        //Invoice::with(['customer', 'menus'])->get();
+      //  Invoice::with(['customer', 'menus'])->get();
     }
-
     public function edit(Invoice $invoice)
     {
-        //
     }
-
     public function update(Request $request, Invoice $invoice)
     {
-        //
     }
-
     public function destroy(Invoice $invoice)
     {
-        //
     }
 }

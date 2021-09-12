@@ -55,7 +55,7 @@
                                                                 <img src="{{ asset('storage').'/'.$menu->photo}}" height="150" width="150" alt="">
                                                                
                                                             </td>
-                                                                <td>{{$menu['name']}}</td>
+                                                                <td>{{$menu['nameMenu']}}</td>
                                                                 <td>{{$menu['price']}}</td>
                                                                 <td>{{$menu['description']}}</td>
                                                                

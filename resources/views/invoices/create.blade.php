@@ -13,8 +13,8 @@
                                        <tbody>
                                        <form class="form form-vertical " action="/invoice" method="post" enctype="multipart/form-data">                                         
                                         {{csrf_field()}}      
-            <section>
-                    <div class="card-body p-0">
+                    <section>
+                     <div class="card-body p-0">
                                                 <div class="row">
                                                     <div class="col-12">
 
@@ -24,16 +24,14 @@
                                                         <h1>SALE</h1>
                                                         </fieldset>
                                                         <fieldset class="faq-search-width form-group position-relative w-20 mx-auto">
-                                                        <lord-icon
-                                                            src="https://cdn.lordicon.com/imamsnbq.json"
-                                                            trigger="loop"
-                                                            colors="primary:#121331,secondary:#1663c7"
-                                                            style="width:250px;height:250px">
-                                                        </lord-icon>
-                                                                </lord-icon>  
-                                                            </fieldset>
-                                                            <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
-                                                                                                            
+                                                            <lord-icon
+                                                                src="https://cdn.lordicon.com/imamsnbq.json"
+                                                                trigger="loop"
+                                                                colors="primary:#121331,secondary:#1663c7"
+                                                                style="width:250px;height:250px">
+                                                            </lord-icon>
+                                                        </fieldset>
+                                                                        <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
                                                                             <label for="first-name-icon">Customer</label>
                                                                             <input type="text" class="form-control round form-control-lg shadow pl-2" name="name" id="name" placeholder="Name">
                                                                         </fieldset>
@@ -68,41 +66,29 @@
                                 </thead>
                                 <tbody>
                                     @foreach($menus as $menu)
-                                    <tr> 
-                                    
-                                    <tr> 
-                                        <td>
-                                        <input type="hidden" name="id[]" class="form-control" id="id" value="{{ $menu->id }}" >{{ $menu->id }}
-                                        </td>
-                                        <td><input type="hidden" name="nameMenu[]" class="form-control" id="nameMenu" value="{{ $menu->nameMenu }}">{{ $menu->nameMenu }}
-                                        </td>
-                                        <td><input type="hidden" name="price[]" class="form-control" id="preci" value="{{ $menu->price }}">{{ $menu->price }}
-                                        </td>
-                                        <td><input type="hidden" name="description[]" class="form-control" id="name" value="{{ $menu->description }}" >{{ $menu->description }}
-                                        </td>
-                                        <td><input type="hidden" name="photo[]" class="form-control" id="name" value="{{ $menu->photo }}" ><img src="{{ asset('storage').'/'.$menu->photo}}" height="150" width="150" alt="">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="number[]" class="form-control" id="number" placeholder="quantity" >
+                                        <tr> 
                                         
-                                            </td>
+                                        <tr> 
                                         @if($menu->state==1)
-                                        <td>
-                                        <span class="badge badge-light-success badge-pill ml-50">ACTIVE</span>
-                                        </td>
-                                        @else
-                                        <td> <span class="badge badge-light-danger badge-pill ml-50">DESACTIVE</span>
-                                        
-                                        </td>   
-                                        
-                                        @endif
-                                       
-                                       
-                                        <td> 
-                                       
-                                    </tr>
-                                    @endforeach  
-                                                                    
+                                            <td>
+                                            <input type="hidden" name="id[]" class="form-control" id="id" value="{{ $menu->id }}" >{{ $menu->id }}
+                                            </td>
+                                            <td><input type="hidden" name="nameMenu[]" class="form-control" id="nameMenu" value="{{ $menu->nameMenu }}">{{ $menu->nameMenu }}
+                                            </td>
+                                            <td><input type="hidden" name="price[]" class="form-control" id="preci" value="{{ $menu->price }}">{{ $menu->price }}
+                                            </td>
+                                            <td><input type="hidden" name="description[]" class="form-control" id="name" value="{{ $menu->description }}" >{{ $menu->description }}
+                                            </td>
+                                            <td><span class="badge badge-light-success badge-pill ml-50">ACTIVE</span>
+                                            </td>
+                                            <td><input type="hidden" name="photo[]" class="form-control" id="name" value="{{ $menu->photo }}" ><img src="{{ asset('storage').'/'.$menu->photo}}" height="150" width="150" alt="">
+                                            </td>
+                                            <td>
+                                                <input type="number" name="number[]" class="form-control" id="number" placeholder="Add Quantity" >
+                                            </td>
+                                            @endif
+                                        </tr>
+                                    @endforeach                       
                                 </tbody>
                             </table>
                             <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">                                          

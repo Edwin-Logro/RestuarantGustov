@@ -7,6 +7,7 @@ class MenuController extends Controller
 {
     public function index()
     {
+       
         $menus['menus'] = Menu::orderBy('id','desc')->get();
         return view('menus.index',$menus);
     }
@@ -33,7 +34,6 @@ class MenuController extends Controller
     public function edit($id)
     {
        $menus=Menu::findOrFail($id);
-       //return response()->json($menus);
         return view('menus.edit', compact('menus'));
     }
     public function update(Request $request, $id)

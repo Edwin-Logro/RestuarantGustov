@@ -9,7 +9,7 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id('id');
-            $table->string('name');
+            $table->string('nameMenu');
             $table->double('price');
             $table->string('description');
             $table->string('photo',300)->nullable();

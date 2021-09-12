@@ -35,7 +35,7 @@
                                                  @csrf
                                                                     <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
                                                                         <label for="first-name-icon">Name</label>
-                                                                        <input type="text" class="form-control round form-control-lg shadow pl-2" name="name" id="name" placeholder="Register Name">
+                                                                        <input type="text" class="form-control round form-control-lg shadow pl-2" name="nameMenu" id="nameMenu" placeholder="Register Name">
                                                                     </fieldset>
                                                                     <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
                                                                         <label for="first-name-icon">Price</label>

@@ -7,8 +7,8 @@
     <meta name="keywords" content="admin template, Frest admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>GUSTOV</title>
-    <link rel="apple-touch-icon" href="{{ asset('ventas') }}/app-assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('ventas') }}/app-assets/images/ico/favicon.ico">
+    <link rel="apple-touch-icon" src="{{asset('ventas') }}/app-assets/images/logo/logos.png">
+    <link rel="" type="image" href="{{asset('ventas') }}/app-assets/images/logo/logos.png "width="1220" heigth="180" >   
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('ventas') }}/app-assets/vendors/css/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('ventas') }}/app-assets/css/bootstrap.css">
@@ -49,14 +49,14 @@
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mr-auto"><a class="navbar-brand" href="{{asset('ventas') }}/html/ltr/vertical-menu-boxicons-template/index.html">
-                        <div class="brand-logo"><img class="logo" src="{{asset('ventas') }}/app-assets/images/logo/logo.png" /></div>
-                        <h2 class="brand-text mb-0">GUSTOV</h2>
+                        <div class="brand-logo"><img  src="{{asset('ventas') }}/app-assets/images/logo/logos.png" width="120" heigth="180" style="margin-left:-20px;margin-top:-20px"/></div>
+                       <h2 class="brand-text mb-0" > <div class="titulo" style="margin-left:40px; margin-top:20px">GUSTOV</div> </h2>
                     </a></li>
                </ul>
         </div>
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
-            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="">   
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="">  <br><br> 
             <li class=" nav-item"><a href="#"><i class="bx bx-menu"></i><span class="menu-title" data-i18n="Menu Levels">Menú</span></a>    <ul class="menu-content">
                         <li><a href="{{ url('/menu/create') }}"><i class="bx bx-right-arrow-alt"></i><span class="menu-item" data-i18n="Avatar">Register Menú</a>
                         </li>
@@ -95,3 +95,4 @@
     <script src="{{ asset('ventas') }}/app-assets/js/scripts/footer.js"></script>
     <script src="{{ asset('ventas') }}/app-assets/js/scripts/forms/wizard-steps.js"></script>
     <script src="{{ asset('ventas') }}/app-assets/js/scripts/pages/faq.js"></script>
+    <script src="{{ asset('ventas') }}/app-assets/js/scripts/pages/app-invoice.js"></script>
