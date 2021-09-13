@@ -73,6 +73,11 @@
                                                             </thead>
                                             
                                                             <tbody>
+                                                                <?php
+                                                                $num=0;
+                                                                ?>
+                                                               
+
                                                              @foreach($menuInvoices as $menuInvoice)
                                                                     
                                                                 @foreach($menus as $menu)
@@ -83,20 +88,29 @@
                                                                         <td>{{$menu['price']}}</td>
                                                                         <td>{{$menuInvoice['number']}}</td>
                                                                         <td>{{$menuInvoice['subTotal']}}</td>
+                                                                        <?php
+                                                                        $num=$num+$menuInvoice['subTotal'];
+                                                                        ?>
+                                                                       
                                                                     @endif
-                                                                    
                                                                     </tr>
                                                                 @endforeach   
                                                              @endforeach   
+                                                             <?php
+                                                                       
+
+                                                                        ?>
                                                              <td> 
                                                                <label for="first-name-icon">Total</label>
                                                                 <td>
                                                                     <td>
                                                                         <td>
                                                                              <td>
+
                                                                                 <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
-                                                                                 <input type="hidden" class="form-control round form-control-lg shadow pl-2" name="name" id="name" value="{{$invoices->total}}">{{$invoices->total}}
-                                                                                </fieldset>
+                                                                        <?php echo $num ?>
+                                           
+                                                                            </fieldset>
                                                                             </td>
                                                                         </td>
                                                                     </td>
@@ -107,7 +121,7 @@
                                                     </table>
                                                 </tbody>
                                             </table>
-                                            <a href="{{url('/menu/'.$menu->id.'/edit')}}"><h1  class="bx bx-edit-alt"></h1><br><br>
+                                          <!-- <a href="{{url('/menu/'.$menu->id.'/edit')}}"><h1  class="bx bx-edit-alt"></h1><br><br>
                                                                     <form action="{{url('/menu/'.$menu->id) }}" method="post">
                                                                         @csrf
                                                                         {{method_field('DELETE')}}
@@ -116,7 +130,7 @@
                                                                         </button></a>
                                                                     
                                                                     </form> 
-                                            <button href="#" class="btn btn-success round mr-1 mb-1">Imprimir</button>
+                                            <button href="#" class="btn btn-success round mr-1 mb-1">Imprimir</button> -->
                                         </div>
                                     </div>
                                 </div>

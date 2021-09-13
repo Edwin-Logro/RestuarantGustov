@@ -7,7 +7,6 @@ use App\Models\MenuInvoice;
 use Uuid;
 use Illuminate\Support\Facades\DB;
 use DateTime;
-
 use Illuminate\Http\Request;
 class InvoiceController extends Controller
 {
@@ -17,8 +16,8 @@ class InvoiceController extends Controller
         $menus = Menu::orderBy('id','desc')->get();
         $invoices = invoice::orderBy('id','desc')->First();
         $menuInvoices = menuInvoice::orderBy('id','desc')->get();
-        return view('invoices.index',compact('customers','menus','invoices','menuInvoices'));
-
+        $totals = DB::select('select Sum(Subtotal) from menu_invoices;');
+        return view('invoices.index',compact('customers','menus','invoices','menuInvoices','totals'));
     }
     public function create()
     {
@@ -62,9 +61,6 @@ class InvoiceController extends Controller
     }
     public function show(Invoice $invoice)
     {
-        //reportes
-        //Invoice::whereBetween('created_at', [$request->date_init, $request->date_end])->with(['customer', 'menu_invoices.menu'])->get();
-      //  Invoice::with(['customer', 'menus'])->get();
     }
     public function edit(Invoice $invoice)
     {

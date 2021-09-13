@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Models\Invoice;
 use App\Models\Menu;
@@ -17,8 +16,9 @@ class ReportController extends Controller
         $customers = Customer::orderBy('id','asc')->get();
         $menuInvoices = MenuInvoice::orderBy('id','asc')->get();
         $menus = Menu::orderBy('id','desc')->get();
-        $totalVentas= DB::select('select Sum(total) from invoices;');
-        return view('reports.index', compact('invoices','reports','customers','menuInvoices', 'menus','totalVentas'));
+        //$totals= DB::select('select Sum(total) from invoices');
+        // dd($totals);
+        return view('reports.index', compact('invoices','reports','customers','menuInvoices', 'menus'));
     }
 
     public function create()
@@ -34,11 +34,12 @@ class ReportController extends Controller
         $report= new Report;
         $report->dateReports=$request->date1;
         $report->save();
-        if($a==$request->date1)
-        {
-            $reports= (string)Invoice::with(['customer', 'menus'])->get();
-       return redirect('/report');
-        }
+        // if($a==$request->date1)
+        // {
+        //     $reports= (string)Invoice::with(['customer', 'menus'])->get();
+           
+        // }
+        return redirect('/report');
     }
     public function show(Report $report)
     {

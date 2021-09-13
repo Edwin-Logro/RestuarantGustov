@@ -8,7 +8,7 @@
     <meta name="author" content="PIXINVENT">
     <title>GUSTOV</title>
     <link rel="apple-touch-icon" src="{{asset('ventas') }}/app-assets/images/logo/logos.png">
-    <link rel="" type="image" href="{{asset('ventas') }}/app-assets/images/logo/logos.png "width="1220" heigth="180" >   
+    <link rel="" type="image" href="{{asset('ventas') }}/app-assets/images/logo/logos.png " >   
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('ventas') }}/app-assets/vendors/css/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('ventas') }}/app-assets/css/bootstrap.css">
@@ -69,14 +69,8 @@
                     <ul class="menu-content">
                         <li><a href="{{ url('/invoice/create') }}"><i class="bx bx-right-arrow-alt"></i><span class="menu-item" data-i18n="Second Level">Register Sale</span></a>
                         </li>
-                        <li><a href="#"><i class="bx bx-right-arrow-alt"></i><span class="menu-item" data-i18n="Second Level">Reports</span></a>
-                            <ul class="menu-content">
-                                <li><a href="#"><i class="bx bx-right-arrow-alt"></i><span class="menu-item" data-i18n="Third Level">Third Level</span></a>
-                                </li>
-                                <li><a href="#"><i class="bx bx-right-arrow-alt"></i><span class="menu-item" data-i18n="Third Level">Third Level</span></a>
-                                </li>
-                            </ul>
-                        </li>
+                        <li><a href="{{ url('/report/create') }}"><i class="bx bx-right-arrow-alt"></i><span class="menu-item" data-i18n="Second Level">Reports</span></a>
+                       
                     </ul>
                 </li>
 

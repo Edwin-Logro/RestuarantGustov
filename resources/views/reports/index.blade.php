@@ -24,8 +24,8 @@ $new=$date.'-'.$month.'-'.$year;
     <meta name="author" content="PIXINVENT">
     <title>GUSTOV</title>
     <link rel="apple-touch-icon" src="{{asset('ventas') }}/app-assets/images/logo/logos.png">
-    <link rel="" type="image" href="{{asset('ventas') }}/app-assets/images/logo/logos.png "width="120" heigth="180" >   
-     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700" rel="stylesheet">
+    <link rel="" type="image" href="{{asset('ventas') }}/app-assets/images/logo/logos.png " >   
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('ventas') }}/app-assets/vendors/css/vendors.min.css">
@@ -210,7 +210,6 @@ $new=$date.'-'.$month.'-'.$year;
                                         <div class="mb-1">
                                             <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
                                                 <h4 for="first-name-icon">Add Date </h4>
-                                                
                                                 <input type="date" class="form-control round form-control-lg shadow pl-2" name="date1" id="date1">
                                             </fieldset>
                                         </div>
@@ -230,54 +229,71 @@ $new=$date.'-'.$month.'-'.$year;
                 <!-- Pick-A-Date Picker end -->
                 <!-- Timeline Widget Starts -->
                 <div class="col-xl-12 col-md-6 timline-card">
-              
+                    <?php  $i=0; ?>
+            
                 @foreach($invoices as $invoice)
                   
-                         @if($invoice->created_at->format('Y-m-d')==$reports->dateReports)
+                    @if($invoice->created_at->format('Y-m-d')==$reports->dateReports)
 
-                             @foreach($customers as $custome)
-                                 @if($invoice->customer_id==$custome->id)
-                        <div class="card ">
+                            @foreach($customers as $custome)
+                                 @if($custome->id==$invoice->id)
+                                    <div class="card ">
+                                            <div class="card-header">
+                                                
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="card-body">
+                                                    <ul class="widget-timeline">
+                                                
+                                                        <li class="timeline-items timeline-icon-success active">
+                                                            <div class="timeline-time"></div>
+                                                  
+                                                            <h6 class="timeline-title">{{$custome['name']}}</h6>
+                                                            <p class="timeline-text">Nit <a href="JavaScript:void(0);">{{$custome['nit']}}</a></p>
+                                                            <p class="timeline-text">Ci <a href="JavaScript:void(0);">{{$custome['ci']}}</a></p>
+                                                            <div class="timeline-content">
+                                                            <p class="timeline-text">total Venta <td>{{$invoice['total']}}</td> bs</p></div>
+                                                            <?php 
+                                                                $i=$i+$invoice['total'];
+                                                            ?>
+                                                   
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                    </div>
+                                
+                                 @endif
+                            @endforeach
+                             
+                    @endif 
+                @endforeach
+                                             
+                                              <div class="card ">
                                 <div class="card-header">
-                                    
-                                </div>
                                 <div class="card-content">
                                     <div class="card-body">
                                         <ul class="widget-timeline">
-                                       
-                                            <li class="timeline-items timeline-icon-success active">
-                                                <div class="timeline-time"></div>
-                                        @if($invoice->id>0)
-                                                <h6 class="timeline-title">{{$custome['name']}}</h6>
-                                                <p class="timeline-text">Nit <a href="JavaScript:void(0);">{{$custome['nit']}}</a></p>
-                                                <div class="timeline-content">
-                                                <p class="timeline-text">total Venta <td>{{$invoice['total']}}</td></p></div>
-                                        @endif
+                                            <li class="timeline-items timeline-icon-primary active">
+                                                <div class="timeline-time"> </div>
+                                                <h6 class="timeline-title">Total Sales Made</h6>
+                                                <p class="timeline-text"> <a href="JavaScript:void(0);"><?php  echo $i?></a> bs</p>
+                                         
+                                                    <img src="{{asset('ventas') }}/app-assets/images/icon/sketch.png" alt="document" height="36" width="27" class="mr-50">
+                                               
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
+                                </div>
+                                
                         </div>
-                  
-                                 @endif
-                             @endforeach
-                        
-                    @endif
-                @endforeach
-   
-
-                                                   
-                           
-                        </div>
-                        <!-- Timeline Widget Ends -->
+                 </div>
             </div>
         </div>
     </div>
     <!-- END: Content-->
-
-
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
-      
     </footer>
     <!-- END: Footer-->
 
