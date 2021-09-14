@@ -13,12 +13,12 @@ class ReportController extends Controller
     {
         $reports = Report::orderBy('id','desc')->First();
         $invoices = Invoice::orderBy('id','asc')->get();
-        $customers = Customer::orderBy('id','asc')->get();
+        $customers = Customer::orderBy('id','asc')->firts();
         $menuInvoices = MenuInvoice::orderBy('id','asc')->get();
         $menus = Menu::orderBy('id','desc')->get();
         //$totals= DB::select('select Sum(total) from invoices');
         // dd($totals);
-        return view('reports.index', compact('invoices','reports','customers','menuInvoices', 'menus'));
+        return view('reports.index', compact('customers','invoices','reports','customers','menuInvoices', 'menus'));
     }
 
     public function create()

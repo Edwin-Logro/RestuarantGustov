@@ -230,42 +230,45 @@ $new=$date.'-'.$month.'-'.$year;
                 <!-- Timeline Widget Starts -->
                 <div class="col-xl-12 col-md-6 timline-card">
                     <?php  $i=0; ?>
-            
-                @foreach($invoices as $invoice)
-                  
-                    @if($invoice->created_at->format('Y-m-d')==$reports->dateReports)
 
+             
+                @foreach($invoices as $invoice)
+            
+                    @if($invoice->created_at->format('Y-m-d')==$reports->dateReports)
+                  
                             @foreach($customers as $custome)
-                                 @if($custome->id==$invoice->id)
-                                    <div class="card ">
-                                            <div class="card-header">
-                                                
-                                            </div>
-                                            <div class="card-content">
-                                                <div class="card-body">
-                                                    <ul class="widget-timeline">
-                                                
-                                                        <li class="timeline-items timeline-icon-success active">
-                                                            <div class="timeline-time"></div>
-                                                  
-                                                            <h6 class="timeline-title">{{$custome['name']}}</h6>
-                                                            <p class="timeline-text">Nit <a href="JavaScript:void(0);">{{$custome['nit']}}</a></p>
-                                                            <p class="timeline-text">Ci <a href="JavaScript:void(0);">{{$custome['ci']}}</a></p>
-                                                            <div class="timeline-content">
-                                                            <p class="timeline-text">total Venta <td>{{$invoice['total']}}</td> bs</p></div>
-                                                            <?php 
-                                                                $i=$i+$invoice['total'];
-                                                            ?>
-                                                   
-                                                    </ul>
+                                 @if($custome->id>=$invoice->id)
+                                     @foreach($menus as $menu)
+                                            @if($menu->state==1)
+                                                <div class="card ">
+                                                        <div class="card-header">
+                                                            
+                                                        </div>
+                                                        <div class="card-content">
+                                                            <div class="card-body">
+                                                                <ul class="widget-timeline">
+                                                            
+                                                                    <li class="timeline-items timeline-icon-success active">
+                                                                        <div class="timeline-time"></div>
+                                                            
+                                                                        <h6 class="timeline-title">{{$custome['name']}}</h6>
+                                                                        <p class="timeline-text">Nit <a href="JavaScript:void(0);">{{$custome['nit']}}</a></p>
+                                                                        <p class="timeline-text">Ci <a href="JavaScript:void(0);">{{$custome['ci']}}</a></p>
+                                                                        <div class="timeline-content">
+                                                                        <p class="timeline-text">total Venta <td>{{$invoice['total']}}</td> bs</p></div>
+                                                                        <?php 
+                                                                            $i=$i+$invoice['total'];
+                                                                        ?>
+                                                            
+                                                                </ul>
+                                                            </div>
+                                                        </div>
                                                 </div>
-                                            </div>
-                                    </div>
-                                
-                                 @endif
-                            @endforeach
-                             
-                    @endif 
+                                            @endif
+                                    @endforeach
+                                @endif
+                         @endforeach
+                    @endif
                 @endforeach
                                              
                                               <div class="card ">

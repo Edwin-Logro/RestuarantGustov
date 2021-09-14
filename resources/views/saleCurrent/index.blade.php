@@ -37,9 +37,12 @@
                                                     <div class="card-body p-0">
                                                         <div class="row">
                                                             <div class="col-12">
-                                                                    
-                                                                       
-                                                              
+                                                                  
+                                                                        <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
+                                                                          <label for="first-name-icon">Customer</label>
+                                                                          <input type="hedden" class="form-control round form-control-lg shadow pl-2" name="name" id="name" value="">
+                                                                        </fieldset>
+                                                               
                                                             </div>
                                                         </div>
                                                     </div>
@@ -48,7 +51,7 @@
                                                                        
                                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                                     
-                                                                
+                                                    {{$name}}
                                                             <thead>
                                                                 <tr>
                                                                     
@@ -57,30 +60,16 @@
                                                                     <th>Price</th>
                                                                     <th>Quantity</th>
                                                                     <th>SubTotal</th>
-                                                                    <th>Total</th>
                                                                 
                                                                 </tr>
                                                             </thead>
                                             
                                                             <tbody>
-                                                            <?php 
-                                                                    $num=0;
-                                                            ?>
-                                                               @foreach($listSale as $list)
-                                                               
-                                                                        <td>{{$list->nameMenu}}</td>
-                                                                        <td><img src="{{ asset('storage').'/'.$list->photo}}" height="150" width="150" alt=""></td>
-                                                                        <td>{{$list->price}}</td>
-                                                                        <td>{{$list->number}}</td>
-                                                                        <td>{{$list->subTotal}}</td>
-                                                                        <td>{{$list->total}}</td>
-
-                                                                        <?php 
-                                                                        $num=$num+$list->total;
-                                                                        ?>
-                                                                    </tr>
-
-                                                                @endforeach   
+                                                                <?php
+                                                                $num=0;
+                                                                ?>
+                                                                     
+                                                   
                                                              <td> 
                                                                <label for="first-name-icon">Total</label>
                                                                 <td>
@@ -89,9 +78,7 @@
                                                                              <td>
 
                                                                                 <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
-                                                                                    <?php 
-                                                                                   echo $num;
-                                                                                    ?>
+                                                                        <?php echo $num ?>
                                            
                                                                             </fieldset>
                                                                             </td>
@@ -104,6 +91,16 @@
                                                     </table>
                                                 </tbody>
                                             </table>
+                                          <!-- <a href="{{url('/menu/'.$menu->id.'/edit')}}"><h1  class="bx bx-edit-alt"></h1><br><br>
+                                                                    <form action="{{url('/menu/'.$menu->id) }}" method="post">
+                                                                        @csrf
+                                                                        {{method_field('DELETE')}}
+                                                                        <button type="submit" onclick="return confirm('Are you sure you want to delete menu?')" class="btn btn-icon btn-danger rounded-circle" type="button" data-repeater-delete="">
+                                                                        <i class="bx bx-x"></i>
+                                                                        </button></a>
+                                                                    
+                                                                    </form> 
+                                            <button href="#" class="btn btn-success round mr-1 mb-1">Imprimir</button> -->
                                         </div>
                                     </div>
                                 </div>
