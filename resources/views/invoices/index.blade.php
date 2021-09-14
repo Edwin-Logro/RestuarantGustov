@@ -57,15 +57,11 @@
                                                                     <th>Price</th>
                                                                     <th>Quantity</th>
                                                                     <th>SubTotal</th>
-                                                                    <th>Total</th>
                                                                 
                                                                 </tr>
                                                             </thead>
                                             
                                                             <tbody>
-                                                            <?php 
-                                                                    $num=0;
-                                                            ?>
                                                                @foreach($listSale as $list)
                                                                
                                                                         <td>{{$list->nameMenu}}</td>
@@ -73,31 +69,20 @@
                                                                         <td>{{$list->price}}</td>
                                                                         <td>{{$list->number}}</td>
                                                                         <td>{{$list->subTotal}}</td>
-                                                                        <td>{{$list->total}}</td>
-
-                                                                        <?php 
-                                                                        $num=$num+$list->total;
-                                                                        ?>
                                                                     </tr>
 
                                                                 @endforeach   
                                                              <td> 
                                                                <label for="first-name-icon">Total</label>
-                                                                <td>
-                                                                    <td>
-                                                                        <td>
                                                                              <td>
-
-                                                                                <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
-                                                                                    <?php 
-                                                                                   echo $num;
-                                                                                    ?>
-                                           
-                                                                            </fieldset>
-                                                                            </td>
-                                                                        </td>
-                                                                    </td>
-                                                                </td>
+                                                                                <td>
+                                                                                  <td>
+                                                                                        <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
+                                                                                        <td>{{$list->total}}</td>
+                                                                                        </fieldset>
+                                                                                 </td> 
+                                                                               <td>
+                                                                            <td>
                                                              </td>
                                                                     
                                                             </tbody>
