@@ -1,85 +1,19 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Receipt;
+use App\Models\Customer;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class ReceiptController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('receipts.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Receipt  $receipt
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Receipt $receipt)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Receipt  $receipt
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Receipt $receipt)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Receipt  $receipt
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Receipt $receipt)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Receipt  $receipt
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Receipt $receipt)
-    {
-        //
+        $customers = Customer::orderBy('id','desc')->First();
+        $listSale = DB::select('select m.nameMenu, m.photo, m.price, me.number, me.subTotal, i.customer_id , i.total, i.codeBill
+                                FROM menus m, menu_invoices me, invoices i 
+                                WHERE m.id=me.menu_id 
+                                AND me.invoice_id=i.id 
+                                AND i.customer_id='.$customers->id);
+        return view('receipts.index',compact('customers','listSale'));
     }
 }

@@ -296,64 +296,50 @@
                                         <div class="row">
                                             <div class="col-xl-4 col-md-12">
                                                 <span class="invoice-number mr-50">Invoice#</span>
-                                                <span>000756</span>
+                                                @foreach($listSale as $lis)
+                                                @endforeach
+                                                <span> {{$lis->codeBill}}</span>
                                             </div>
                                             <div class="col-xl-8 col-md-12">
                                                 <div class="d-flex align-items-center justify-content-xl-end flex-wrap">
                                                     <div class="mr-3">
                                                         <small class="text-muted">Date Issue:</small>
-                                                        <span>08/10/2019</span>
+                                                        <span>{{$customers->created_at}}</span>
                                                     </div>
-                                                    <div>
-                                                        <small class="text-muted">Date Due:</small>
-                                                        <span>08/10/2019</span>
-                                                    </div>
+                                                  
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- logo and title -->
                                         <div class="row my-3">
                                             <div class="col-6">
-                                                <h4 class="text-primary">Invoice</h4>
-                                                <span>Software Development</span>
+                                                <h4 class="text-primary">GUSTOV</h4>
+                                                <span>TEL: 70634370</span>
                                             </div>
                                             <div class="col-6 d-flex justify-content-end">
-                                                <img src="{{ asset('ventas') }}/app-assets/images/pages/pixinvent-logo.png" alt="logo" height="46" width="164">
+                                                <img src="{{ asset('ventas') }}/app-assets/images/pages/logo.png" alt="logo" height="110" width="164">
                                             </div>
                                         </div>
                                         <hr>
                                         <!-- invoice address and contact -->
                                         <div class="row invoice-info">
                                             <div class="col-6 mt-1">
-                                                <h6 class="invoice-from">Bill From</h6>
+                                                <h6 class="invoice-from">Client</h6>
                                                 <div class="mb-1">
-                                                    <span>Clevision PVT. LTD.</span>
+                                                    <span>{{$customers->name}}</span>
                                                 </div>
+                                                <h6 class="invoice-from">Ni</h6>
                                                 <div class="mb-1">
-                                                    <span>9205 Whitemarsh Street New York, NY 10002</span>
+                                                    <span>{{$customers->nit}}</span>
+
                                                 </div>
+                                                <h6 class="invoice-from">Ci</h6>
                                                 <div class="mb-1">
-                                                    <span>hello@clevision.net</span>
+                                                    <span>{{$customers->ci}}</span>
                                                 </div>
-                                                <div class="mb-1">
-                                                    <span>601-678-8022</span>
-                                                </div>
+                                               
                                             </div>
-                                            <div class="col-6 mt-1">
-                                                <h6 class="invoice-to">Bill To</h6>
-                                                <div class="mb-1">
-                                                    <span>Pixinvent PVT. LTD.</span>
-                                                </div>
-                                                <div class="mb-1">
-                                                    <span>203 Sussex St. Suite B Waukegan, IL 60085</span>
-                                                </div>
-                                                <div class="mb-1">
-                                                    <span>pixinvent@gmail.com</span>
-                                                </div>
-                                                <div class="mb-1">
-                                                    <span>987-352-5603</span>
-                                                </div>
-                                            </div>
+                                          
                                         </div>
                                         <hr>
                                     </div>
@@ -362,35 +348,26 @@
                                         <table class="table table-borderless mb-0">
                                             <thead>
                                                 <tr class="border-0">
-                                                    <th scope="col">Item</th>
-                                                    <th scope="col">Description</th>
-                                                    <th scope="col">Cost</th>
-                                                    <th scope="col">Qty</th>
-                                                    <th scope="col" class="text-right">Price</th>
+                                                    <th scope="col">Menú</th>
+                                                    <th scope="col">Price</th>
+                                                    <th scope="col">Quantity</th>
+                                                    <th scope="col" class="text-right">Subtotal</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>Frest Admin</td>
-                                                    <td>HTML Admin Template</td>
-                                                    <td>28</td>
-                                                    <td>1</td>
-                                                    <td class="text-primary text-right font-weight-bold">$28.00</td>
+                                             @foreach($listSale as $list)   
+                                               
+                                                <td>{{$list->nameMenu}}</td>
+                                               
+                                                
+                                                <td>{{$list->price}}</td> 
+                                               
+                                                
+                                                <td>{{$list->number}}</td>
+                                                
+                                                <td class="text-primary text-right font-weight-bold">{{$list->subTotal}}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Apex Admin</td>
-                                                    <td>Anguler Admin Template</td>
-                                                    <td>24</td>
-                                                    <td>1</td>
-                                                    <td class="text-primary text-right font-weight-bold">$24.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Stack Admin</td>
-                                                    <td>HTML Admin Template</td>
-                                                    <td>24</td>
-                                                    <td>1</td>
-                                                    <td class="text-primary text-right font-weight-bold">$24.00</td>
-                                                </tr>
+                                             @endforeach  
                                             </tbody>
                                         </table>
                                     </div>
@@ -401,35 +378,33 @@
                                         <div class="row">
                                             <div class="col-4 col-sm-6 mt-75">
                                                 <p>Thanks for your business.</p>
+                                                <?php 
+                                                $num=0.12;
+                                                $result=0;
+                                                $result2=0;
+                                                $result=$num*$list->total;
+                                                $result2=$list->total-$result;
+                                                ?>
                                             </div>
                                             <div class="col-8 col-sm-6 d-flex justify-content-end mt-75">
                                                 <div class="invoice-subtotal">
                                                     <div class="invoice-calc d-flex justify-content-between">
-                                                        <span class="invoice-title">Subtotal</span>
-                                                        <span class="invoice-value">$ 76.00</span>
+                                                        <span class="invoice-title">Sub Total</span>
+                                                        <span class="invoice-value"><?php echo $result2?></span>
                                                     </div>
                                                     <div class="invoice-calc d-flex justify-content-between">
-                                                        <span class="invoice-title">Discount</span>
-                                                        <span class="invoice-value">- $ 09.60</span>
+                                                        <span class="invoice-title">Iva 13 %</span>
+                                                        <span class="invoice-value"><?php echo $result ?></span>
                                                     </div>
                                                     <div class="invoice-calc d-flex justify-content-between">
-                                                        <span class="invoice-title">Tax</span>
-                                                        <span class="invoice-value">21%</span>
+                                                        <span class="invoice-title">Total </span>
+                                                        <span class="invoice-value">{{$list->total}}</span>
                                                     </div>
-                                                    <hr>
-                                                    <div class="invoice-calc d-flex justify-content-between">
-                                                        <span class="invoice-title">Invoice Total</span>
-                                                        <span class="invoice-value">$ 66.40</span>
-                                                    </div>
-                                                    <div class="invoice-calc d-flex justify-content-between">
-                                                        <span class="invoice-title">Paid to date</span>
-                                                        <span class="invoice-value">- $ 00.00</span>
-                                                    </div>
-                                                    <div class="invoice-calc d-flex justify-content-between">
-                                                        <span class="invoice-title">Balance (USD)</span>
-                                                        <span class="invoice-value">$ 10,953</span>
-                                                    </div>
+                                                    
+                                                   
+                                                <hr>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>

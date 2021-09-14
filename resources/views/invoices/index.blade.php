@@ -37,9 +37,20 @@
                                                     <div class="card-body p-0">
                                                         <div class="row">
                                                             <div class="col-12">
-                                                                    
-                                                                       
-                                                              
+                                                                        <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
+                                                                            <label for="first-name-icon">Customer</label>
+                                                                            <input type="text" class="form-control" placeholder="Disabled Text" disabled="" value="{{$customers->name}}">
+                                                                        </fieldset> 
+                                                                        <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">  
+                                                                            <label for="first-name-icon">Ci</label>
+                                                                            <input type="text" class="form-control" placeholder="Disabled Text" disabled="" value="{{$customers->nit}}">
+                                                                        </fieldset> 
+                                                                        <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">  
+                                                                            <label for="first-name-icon">Nit</label>
+                                                                            <input type="text" class="form-control" placeholder="Disabled Text" disabled="" value="{{$customers->ci}}">
+                                                                        </fieldset> 
+                                                                                
+                                                            
                                                             </div>
                                                         </div>
                                                     </div>
@@ -47,23 +58,17 @@
                                                 </section>
                                                                        
                                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                                    
-                                                                
                                                             <thead>
                                                                 <tr>
-                                                                    
                                                                     <th>Menu</th>
                                                                     <th>Photo</th>
                                                                     <th>Price</th>
                                                                     <th>Quantity</th>
                                                                     <th>SubTotal</th>
-                                                                
                                                                 </tr>
                                                             </thead>
-                                            
                                                             <tbody>
                                                                @foreach($listSale as $list)
-                                                               
                                                                         <td>{{$list->nameMenu}}</td>
                                                                         <td><img src="{{ asset('storage').'/'.$list->photo}}" height="150" width="150" alt=""></td>
                                                                         <td>{{$list->price}}</td>
@@ -72,23 +77,39 @@
                                                                     </tr>
 
                                                                 @endforeach   
-                                                             <td> 
-                                                               <label for="first-name-icon">Total</label>
-                                                                             <td>
-                                                                                <td>
-                                                                                  <td>
-                                                                                        <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
-                                                                                        <td>{{$list->total}}</td>
-                                                                                        </fieldset>
-                                                                                 </td> 
-                                                                               <td>
-                                                                            <td>
-                                                             </td>
-                                                                    
-                                                            </tbody>
+
+                                                          
+                                                         </tbody>
                                                     </table>
                                                 </tbody>
                                             </table>
+                                            <div class="row">
+                                                            <div class="col-xl-2 col-md-4 col-sm-6">
+                                                                <div class="card text-center">
+                                                                    <div class="card-content">
+                                                                        <div class="card-body">
+                                                                            <div class="badge-circle badge-circle-lg badge-circle-light-danger mx-auto my-1">
+                                                                                <i class="bx bx-message font-medium-5"></i>
+                                                                            </div>
+                                                                            <p class="text-muted mb-0 line-ellipsis">SALE TOTAL</p>
+                                                                            <h2 class="mb-0">{{$list->total}} bs </h2>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-2 col-md-4 col-sm-6">
+                                                            <div class="card text-center">
+                                                                <div class="card-content">
+                                                                    <div class="card-body">
+                                                                        <div class="badge-circle badge-circle-lg badge-circle-light-warning mx-auto my-1">
+                                                                            <i class="bx bx-file font-medium-5"></i>
+                                                                        </div>
+                                                                        <li><a href="{{ url('/receipt/') }}"><i class="text-muted mb-0 line-ellipsis"></i><span class="menu-item" data-i18n="Divider">Imprimir</span></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                         </div>
                                         </div>
                                     </div>
                                 </div>

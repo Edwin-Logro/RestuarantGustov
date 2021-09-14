@@ -13,16 +13,12 @@ class InvoiceController extends Controller
     public function index()
     {
         $customers = Customer::orderBy('id','desc')->First();
-        $menus = Menu::orderBy('id','desc')->get();
-        $invoices = invoice::orderBy('id','desc')->First();
-        $menuInvoices = menuInvoice::orderBy('id','desc')->get();
         $listSale = DB::select('select m.nameMenu, m.photo, m.price, me.number, me.subTotal, i.customer_id , i.total 
                                 FROM menus m, menu_invoices me, invoices i 
                                 WHERE m.id=me.menu_id 
                                 AND me.invoice_id=i.id 
                                 AND i.customer_id='.$customers->id);
-
-        return view('invoices.index',compact('customers','menus','invoices','menuInvoices','listSale'));
+        return view('invoices.index',compact('customers','listSale'));
     }
     public function create()
     {

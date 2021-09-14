@@ -84,7 +84,8 @@
                                             <td><input type="hidden" name="photo[]" class="form-control" id="name" value="{{ $menu->photo }}" ><img src="{{ asset('storage').'/'.$menu->photo}}" height="150" width="150" alt="">
                                             </td>
                                             <td>
-                                                <input type="number" name="number[]" class="form-control" id="number" placeholder="Add Quantity" >
+                                            <input type="number" name="number[]" class="touchspin-color form-control" id="number" data-bts-button-down-class="btn btn-success" data-bts-button-up-class="btn btn-success"  placeholder="Add Quantity">
+                                                
                                             </td>
                                             @endif
                                         </tr>
