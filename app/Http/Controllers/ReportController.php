@@ -24,13 +24,19 @@ class ReportController extends Controller
                                     AND me.invoice_id=i.id 
                                     AND cu.id=i.customer_id 
                                     AND DATE_FORMAT(i.created_at,"%Y-%m-%d")='."'$reports->dateReports'".'ORDER BY i.id desc');
-        $listTotalSales= DB::select('select sum(i.total)
-                                    FROM invoices i
-                                    WHERE DATE_FORMAT(i.created_at,"%Y-%m-%d")='."'$reports->dateReports'");
+        $listMenus= DB::select('select DISTINCT(m.nameMenu), (m.photo)
+                                    FROM menus m, menu_invoices me, invoices i, customers cu
+                                    WHERE m.id=me.menu_id 
+                                    AND me.invoice_id=i.id 
+                                    AND cu.id=i.customer_id 
+                                    AND DATE_FORMAT(i.created_at,"%Y-%m-%d")='."'$reports->dateReports'".'ORDER BY i.id desc');
+        $listTotals= DB::select('select m.nameMenu, me.number, me.subTotal
+                                FROM menus m, menu_invoices me, invoices i, customers cu
+                                WHERE m.id=me.menu_id AND me.invoice_id=i.id 
+                                AND cu.id=i.customer_id 
+                                AND DATE_FORMAT(i.created_at,"%Y-%m-%d")='."'$reports->dateReports'".'ORDER BY i.id desc');
 
-                                    
-        
-        return view('reports.index',compact('reports','listReports','listClients','listTotalSales'));
+        return view('reports.index',compact('reports','listReports','listClients','listMenus','listTotals'));
     }
 
     public function create()

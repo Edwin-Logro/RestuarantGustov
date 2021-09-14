@@ -230,10 +230,8 @@ $new=$date.'-'.$month.'-'.$year;
                 <!-- Timeline Widget Starts -->
                 <div class="col-xl-12 col-md-6 timline-card">
                                         <div class="card ">
-                                                        <div class="card-header">
-                                                            
-                                                        </div>
-                                                        <div class="card-content">
+                                             <div class="card-header"> </div>
+                                                    <div class="card-content">
                                                             <div class="card-body">
                                                                 <ul class="widget-timeline">
                                                                     <h3>Report Customers</h3>
@@ -241,21 +239,20 @@ $new=$date.'-'.$month.'-'.$year;
                                                                 @foreach($listClients as $client)
                                                                     <li class="timeline-items timeline-icon-success active">
                                                                          <p class="timeline-text">Customer:  <a href="JavaScript:void(0);">{{$client->name}}</a></p>
-                                                                         <li class="timeline-items timeline-icon-danger active">
-                                                                        <h6 class="timeline-title">Total Sale</h6>
+                                                                          <h6 class="timeline-title">Total Sale</h6>
+                                                                        
                                                                         <p class="timeline-text"> <a href="JavaScript:void(0);">{{$client->total}}</a> bs</p>
-                                                                       <?php $num=$num+$client->total; ?>
+                                                                       <?php $num=$num+$client->total; ?><hr>
+                                                                
                                                                     </li>
                                                                  @endforeach 
                                                                  
                                                                 
-                                                                
                                                                 </ul>
                                                             </div>
-                                                        </div>
-                                                </div>
-                                  
-                                              <div class="card ">
+                                                    </div>
+                                            </div>
+                                        <div class="card ">
                                 <div class="card-header">
                                 <div class="card-content">
                                     <div class="card-body">
@@ -272,13 +269,74 @@ $new=$date.'-'.$month.'-'.$year;
                                         </ul>
                                     </div>
                                 </div>
-                                </div>
+                </div>
+                
                                 
                         </div>
                  </div>
+                   <!-- Widgets Statistics start -->
+                   <section id="widgets-Statistics">
+                    <div class="row">
+                        <div class="col-12 mt-1 mb-2">
+                            <h3>Report Menús</h3>
+                            <hr>
+                        </div>
+                    </div>
+                 
+                    <div class="row">
+                    @foreach($listMenus as $listmenu)
+                        <div class="col-xl-2 col-md-4 col-sm-6">
+                            <div class="card text-center">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        
+                                            <div class="badge-circle badge-circle-lg badge-circle-light-info mx-auto my-1">
+                                              
+                                                <img src="{{ asset('storage').'/'.$listmenu->photo}}" height="130" width="230" alt="" ><br>
+                                                  
+                                            </div>
+                                            <p class="text-muted mb-0 line-ellipsis">.</p>
+                                            <h3>{{$listmenu->nameMenu}}</h3>
+                                            
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                        <?php $num=0;  $num2=0; ?>
+                    @foreach($listTotals as $listst)
+                        @if($listst->nameMenu==$listst->nameMenu)
+                      
+                            <?php $num=$num+$listst->subTotal;
+                                        $num2=$num2+$listst->number;
+                                        ?>
+                        @endif      
+                                  
+                    @endforeach
+                    <div class="col-xl-2 col-md-4 col-sm-6">
+                            <div class="card text-center">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="badge-circle badge-circle-lg badge-circle-light-danger mx-auto my-1">
+                                            <i class="bx bx-shopping-bag font-medium-5"></i>
+                                        </div>
+                                        <p class="text-muted mb-0 line-ellipsis">Quantity Menu sold</p>
+                                        <h2 class="mb-0"> <?php echo $num2?><h4>Sold menus</h4> </h2>
+                                        <p class="text-muted mb-0 line-ellipsis">Total Sale</p>
+                                        <h2 class="mb-0"> <?php echo $num?>  bs</h2> 
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Widgets Statistics End -->
             </div>
         </div>
     </div>
+   
     <!-- END: Content-->
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
