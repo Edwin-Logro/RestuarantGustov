@@ -14,6 +14,7 @@ class ReceiptController extends Controller
                                 WHERE m.id=me.menu_id 
                                 AND me.invoice_id=i.id 
                                 AND i.customer_id='.$customers->id);
+        
         return view('receipts.index',compact('customers','listSale'));
     }
 }

@@ -7,8 +7,8 @@
     <meta name="keywords" content="admin template, Frest admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>GUSTOV</title>
-    <link rel="apple-touch-icon" src="{{asset('ventas') }}/app-assets/images/logo/logos.png">
-    <link rel="" type="image" href="{{asset('ventas') }}/app-assets/images/logo/logos.png " >   
+    <link rel="apple-touch-icon" src="{{asset('ventas') }}/app-assets/images/logo/gust.png">
+    <link rel="" type="image" href="{{asset('ventas') }}/app-assets/images/logo/gust.png " >   
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('ventas') }}/app-assets/vendors/css/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('ventas') }}/app-assets/css/bootstrap.css">

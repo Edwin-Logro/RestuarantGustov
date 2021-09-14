@@ -10,15 +10,27 @@ use Illuminate\Support\Facades\DB;
 class ReportController extends Controller
 {
     public function index()
-    {
+    { 
         $reports = Report::orderBy('id','desc')->First();
-        $invoices = Invoice::orderBy('id','asc')->get();
-        $customers = Customer::orderBy('id','asc')->firts();
-        $menuInvoices = MenuInvoice::orderBy('id','asc')->get();
-        $menus = Menu::orderBy('id','desc')->get();
-        //$totals= DB::select('select Sum(total) from invoices');
-        // dd($totals);
-        return view('reports.index', compact('customers','invoices','reports','customers','menuInvoices', 'menus'));
+        $listReports = DB::select('select cu.name, m.nameMenu, m.price, me.number, me.subTotal, i.total,i.customer_id 
+                                    FROM menus m, menu_invoices me, invoices i , customers cu 
+                                    WHERE m.id=me.menu_id 
+                                    AND me.invoice_id=i.id 
+                                    AND cu.id=i.customer_id 
+                                    AND DATE_FORMAT(i.created_at,"%Y-%m-%d")='."'$reports->dateReports'".' ORDER by i.id DESC');
+        $listClients= DB::select('select distinct(cu.name),( i.total) 
+                                    FROM menus m, menu_invoices me, invoices i , customers cu 
+                                    WHERE m.id=me.menu_id 
+                                    AND me.invoice_id=i.id 
+                                    AND cu.id=i.customer_id 
+                                    AND DATE_FORMAT(i.created_at,"%Y-%m-%d")='."'$reports->dateReports'".'ORDER BY i.id desc');
+        $listTotalSales= DB::select('select sum(i.total)
+                                    FROM invoices i
+                                    WHERE DATE_FORMAT(i.created_at,"%Y-%m-%d")='."'$reports->dateReports'");
+
+                                    
+        
+        return view('reports.index',compact('reports','listReports','listClients','listTotalSales'));
     }
 
     public function create()
@@ -28,33 +40,10 @@ class ReportController extends Controller
 
     public function store(Request $request)
     {
-       
-        $invoices = invoice::orderBy('id','desc')->First();
-        $a= $invoices->created_at->format('Y-m-d');
-        $report= new Report;
+          $report= new Report;
         $report->dateReports=$request->date1;
+        //dd($report);
         $report->save();
-        // if($a==$request->date1)
-        // {
-        //     $reports= (string)Invoice::with(['customer', 'menus'])->get();
-           
-        // }
         return redirect('/report');
-    }
-    public function show(Report $report)
-    {
-        //
-    }
-    public function edit(Report $report)
-    {
-        //
-    }
-    public function update(Request $request, Report $report)
-    {
-        //
-    }
-    public function destroy(Report $report)
-    {
-        //
     }
 }

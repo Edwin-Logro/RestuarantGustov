@@ -229,48 +229,32 @@ $new=$date.'-'.$month.'-'.$year;
                 <!-- Pick-A-Date Picker end -->
                 <!-- Timeline Widget Starts -->
                 <div class="col-xl-12 col-md-6 timline-card">
-                    <?php  $i=0; ?>
-
-             
-                @foreach($invoices as $invoice)
-            
-                    @if($invoice->created_at->format('Y-m-d')==$reports->dateReports)
-                  
-                            @foreach($customers as $custome)
-                                 @if($custome->id>=$invoice->id)
-                                     @foreach($menus as $menu)
-                                            @if($menu->state==1)
-                                                <div class="card ">
+                                        <div class="card ">
                                                         <div class="card-header">
                                                             
                                                         </div>
                                                         <div class="card-content">
                                                             <div class="card-body">
                                                                 <ul class="widget-timeline">
-                                                            
+                                                                    <h3>Report Customers</h3>
+                                                                <?php $num=0; ?>
+                                                                @foreach($listClients as $client)
                                                                     <li class="timeline-items timeline-icon-success active">
-                                                                        <div class="timeline-time"></div>
-                                                            
-                                                                        <h6 class="timeline-title">{{$custome['name']}}</h6>
-                                                                        <p class="timeline-text">Nit <a href="JavaScript:void(0);">{{$custome['nit']}}</a></p>
-                                                                        <p class="timeline-text">Ci <a href="JavaScript:void(0);">{{$custome['ci']}}</a></p>
-                                                                        <div class="timeline-content">
-                                                                        <p class="timeline-text">total Venta <td>{{$invoice['total']}}</td> bs</p></div>
-                                                                        <?php 
-                                                                            $i=$i+$invoice['total'];
-                                                                        ?>
-                                                            
+                                                                         <p class="timeline-text">Customer:  <a href="JavaScript:void(0);">{{$client->name}}</a></p>
+                                                                         <li class="timeline-items timeline-icon-danger active">
+                                                                        <h6 class="timeline-title">Total Sale</h6>
+                                                                        <p class="timeline-text"> <a href="JavaScript:void(0);">{{$client->total}}</a> bs</p>
+                                                                       <?php $num=$num+$client->total; ?>
+                                                                    </li>
+                                                                 @endforeach 
+                                                                 
+                                                                
+                                                                
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                 </div>
-                                            @endif
-                                    @endforeach
-                                @endif
-                         @endforeach
-                    @endif
-                @endforeach
-                                             
+                                  
                                               <div class="card ">
                                 <div class="card-header">
                                 <div class="card-content">
@@ -279,8 +263,9 @@ $new=$date.'-'.$month.'-'.$year;
                                             <li class="timeline-items timeline-icon-primary active">
                                                 <div class="timeline-time"> </div>
                                                 <h6 class="timeline-title">Total Sales Made</h6>
-                                                <p class="timeline-text"> <a href="JavaScript:void(0);"><?php  echo $i?></a> bs</p>
-                                         
+                                              
+                                                <p class="timeline-text"><?php echo $num?> <a href="JavaScript:void(0);"></a> bs</p>
+                                             
                                                     <img src="{{asset('ventas') }}/app-assets/images/icon/sketch.png" alt="document" height="36" width="27" class="mr-50">
                                                
                                             </li>
