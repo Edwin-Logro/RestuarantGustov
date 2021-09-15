@@ -9,7 +9,6 @@
                             <div class="card widget-user-details">
                                 <div class="card-header">
                                     <div class="card-title-details d-flex align-items-center">
-                                       
                                          <div class="dashboard-content-right">
                                             <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
                                                 <lord-icon
@@ -20,7 +19,6 @@
                                                     class="img-fluid">
                                                 </lord-icon>
                                          </div>
-                                      
                                         <div>
                                             <h5>REGISTER NEW MENÚ</h5>
                                         </div>
@@ -46,14 +44,28 @@
                                                                         <input type="textarea" class="form-control round form-control-lg shadow pl-2" name="description" id="description" placeholder="Register Description">
                                                                     </fieldset>
                                                                     <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
-                                                                        <label for="first-name-icon">Photo</label>
-                                                                         <input type="file"  name="photo" id="photo">
+                                                                    <label for="first-name-icon">Photo</label>
+                                                                       <input type='file' name="photo" onchange="readURL(this);" />
+                                                                    <img  name="photo" id="blah" src="http://placehold.it/180" width="200px" heigth="200px" alt="your image" />
+                                                                    <script>
+                                                                        function readURL(input) {
+                                                                        if (input.files && input.files[0]) {
+                                                                            var reader = new FileReader();
+
+                                                                            reader.onload = function (e) {
+                                                                                $('#blah')
+                                                                                    .attr('src', e.target.result);
+                                                                            };
+
+                                                                            reader.readAsDataURL(input.files[0]);
+                                                                        }
+                                                                    }
+                                                                    </script>
                                                                     </fieldset>
                                                                     <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
                                                                         <br>
                                                                         <label for="first-name-icon">State</label>
                                                                         <br><br>
-
                                                                                 <div class="form-check form-check-inline">
                                                                                     <input type="radio" class="form-check-input" id="state" name="state" value="1" checked>
                                                                                     <label class="form-check-label" for="materialInline1">Active</label>
@@ -64,7 +76,6 @@
                                                                                 </div>
                                                                     </fieldset>
                                                                     <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
-                                                                                    
                                                                         <button type="submit" class="btn btn-primary mr-1 mb-1">Guardar</button>
                                                                         <button type="reset" class="btn btn-light-secondary mr-1 mb-1">Cancelar</button>
                                                                    </fieldset>        

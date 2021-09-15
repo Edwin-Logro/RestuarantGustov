@@ -48,10 +48,24 @@
                                                                     </fieldset>
                                                                     <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
                                                                         <label for="first-name-icon">Photo</label>
-                                                                        <img src="{{ asset('storage').'/'.$menus->photo }}"  height="150" width="150" alt="">
-                                                                       
-                                                                        <input type="file"  name="photo" id="photo" value="{{$menus->photo}}">
+                                                                        <input type='file' name="photo" onchange="readURL(this);" />
+                                                                        <img  name="photo" id="blah" src="{{ asset('storage').'/'.$menus->photo }}"  height="150" width="150" alt="" width="200px" heigth="200px" alt="your image" />
+                                                                        <script>
+                                                                            function readURL(input) {
+                                                                            if (input.files && input.files[0]) {
+                                                                                var reader = new FileReader();
+
+                                                                                reader.onload = function (e) {
+                                                                                    $('#blah')
+                                                                                        .attr('src', e.target.result);
+                                                                                };
+
+                                                                                reader.readAsDataURL(input.files[0]);
+                                                                            }
+                                                                        }
+                                                                        </script>
                                                                     </fieldset>
+                                                                 
                                                                     <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">
                                                                         <br>
                                                                         <label for="first-name-icon">State</label>

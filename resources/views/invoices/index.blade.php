@@ -49,14 +49,10 @@
                                                                             <label for="first-name-icon">Nit</label>
                                                                             <input type="text" class="form-control" placeholder="Disabled Text" disabled="" value="{{$customers->ci}}">
                                                                         </fieldset> 
-                                                                                
-                                                            
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                                                    
-                                                </section>
-                                                                       
+                                                    </div>                          
+                                                </section>          
                                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                                             <thead>
                                                                 <tr>
@@ -75,10 +71,7 @@
                                                                         <td>{{$list->number}}</td>
                                                                         <td>{{$list->subTotal}}</td>
                                                                     </tr>
-
                                                                 @endforeach   
-
-                                                          
                                                          </tbody>
                                                     </table>
                                                 </tbody>

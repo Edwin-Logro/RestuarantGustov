@@ -7,7 +7,6 @@ class MenuController extends Controller
 {
     public function index()
     {
-       
         $menus['menus'] = Menu::orderBy('id','desc')->get();
         return view('menus.index',$menus);
     }
@@ -21,15 +20,13 @@ class MenuController extends Controller
         $factMenus= request()->except('_token');
         if($request->hasFile('photo'))
         {
-            $factMenus['photo'] = $request->file('photo')->store('uploads','public');
-            
+            $factMenus['photo'] = $request->file('photo')->store('uploads','public');    
         }
         Menu::insert($factMenus); 
         return redirect('/menu')->with('note','Menu added successfully');
     }
     public function show(Menu $menu)
-    {
-        
+    { 
     }
     public function edit($id)
     {

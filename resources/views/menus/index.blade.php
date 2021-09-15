@@ -45,19 +45,15 @@
                                                                 <th>Actions</th>
                                                             </tr>
                                                         </thead>
-                                        
                                                         <tbody>
                                                             @foreach($menus as $menu)
                                                             <tr> 
                                                                 <td>
-                                                              
                                                                 <img src="{{ asset('storage').'/'.$menu->photo}}" height="150" width="150" alt="">
-                                                               
                                                             </td>
                                                                 <td>{{$menu['nameMenu']}}</td>
                                                                 <td>{{$menu['price']}}</td>
                                                                 <td>{{$menu['description']}}</td>
-                                                               
                                                                 @if($menu->state==1)
                                                                 <td>
                                                                 <span class="badge badge-light-success badge-pill ml-50">ACTIVE</span>
@@ -74,7 +70,6 @@
                                                                     <button type="submit" onclick="return confirm('Are you sure you want to delete menu?')" class="btn btn-icon btn-danger rounded-circle" type="button" data-repeater-delete="">
                                                                     <i class="bx bx-x"></i>
                                                                     </button></a>
-                                                                   
                                                                   </form>
                                                                 </td>
                                                             </tr>
