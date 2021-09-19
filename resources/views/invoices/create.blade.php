@@ -95,9 +95,7 @@
                             <fieldset class="faq-search-width form-group position-relative w-50 mx-auto">                                          
                             <button type="submit" class="btn btn-primary mr-1 mb-1">ADD SALE</button>
                             </fieldset> 
-
-        </form>
-                                              
+                            </form> 
                                         </tbody>
                                     </div>
                                 </div>

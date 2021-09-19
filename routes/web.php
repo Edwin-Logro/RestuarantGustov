@@ -6,6 +6,7 @@ Route::resource('invoice','InvoiceController');
 Route::resource('receipt','ReceiptController');
 Route::resource('report','ReportController');
 Route::resource('saleCurrent','SaleCurrentController');
+Route::resource('salereport','SaleReportController');
 
 // Route::get('/saleCurrent',function(){
 //     return view('saleCurrent',["name"=>"hola mundo"]);

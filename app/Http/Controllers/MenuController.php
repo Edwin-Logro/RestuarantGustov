@@ -50,11 +50,11 @@ class MenuController extends Controller
     }
     public function destroy($id)
     {
+       
         $menus=Menu::findOrFail($id);
-        if(Storage::delete('public/'.$menus->photo))
-        {
+       
             Menu::destroy($id);
-        }     
+          
         return redirect('menu')->with('note','Menu removed successfully');
     }
 }
